@@ -18,4 +18,4 @@ jobs:
         run: |
           bash ./bin/check-release-environment
         env:
-          PYPI_TOKEN: ${{ secrets.AMTRAK_ROHIT_DIVATE_PYPI_TOKEN || secrets.PYPI_TOKEN }}
+          PYPI_TOKEN: ${{ secrets.AMTRAK_PYPI_TOKEN || secrets.PYPI_TOKEN }}

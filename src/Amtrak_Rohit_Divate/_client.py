@@ -26,31 +26,22 @@ from ._utils import (
 from ._version import __version__
 from .resources import bookings, list_trips, list_stations
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, AmtrakRohitDivateError
+from ._exceptions import AmtrakError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
     AsyncAPIClient,
 )
 
-__all__ = [
-    "Timeout",
-    "Transport",
-    "ProxiesTypes",
-    "RequestOptions",
-    "AmtrakRohitDivate",
-    "AsyncAmtrakRohitDivate",
-    "Client",
-    "AsyncClient",
-]
+__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Amtrak", "AsyncAmtrak", "Client", "AsyncClient"]
 
 
-class AmtrakRohitDivate(SyncAPIClient):
+class Amtrak(SyncAPIClient):
     list_stations: list_stations.ListStationsResource
     list_trips: list_trips.ListTripsResource
     bookings: bookings.BookingsResource
-    with_raw_response: AmtrakRohitDivateWithRawResponse
-    with_streaming_response: AmtrakRohitDivateWithStreamedResponse
+    with_raw_response: AmtrakWithRawResponse
+    with_streaming_response: AmtrakWithStreamedResponse
 
     # client options
     api_key: str
@@ -78,20 +69,20 @@ class AmtrakRohitDivate(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous Amtrak_Rohit_Divate client instance.
+        """Construct a new synchronous amtrak client instance.
 
         This automatically infers the `api_key` argument from the `TRAIN_TRAVEL_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("TRAIN_TRAVEL_API_KEY")
         if api_key is None:
-            raise AmtrakRohitDivateError(
+            raise AmtrakError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the TRAIN_TRAVEL_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("AMTRAK_ROHIT_DIVATE_BASE_URL")
+            base_url = os.environ.get("AMTRAK_BASE_URL")
         if base_url is None:
             base_url = f"https://try.microcks.io/rest/Train+Travel+API/1.0.0"
 
@@ -109,8 +100,8 @@ class AmtrakRohitDivate(SyncAPIClient):
         self.list_stations = list_stations.ListStationsResource(self)
         self.list_trips = list_trips.ListTripsResource(self)
         self.bookings = bookings.BookingsResource(self)
-        self.with_raw_response = AmtrakRohitDivateWithRawResponse(self)
-        self.with_streaming_response = AmtrakRohitDivateWithStreamedResponse(self)
+        self.with_raw_response = AmtrakWithRawResponse(self)
+        self.with_streaming_response = AmtrakWithStreamedResponse(self)
 
     @property
     @override
@@ -217,12 +208,12 @@ class AmtrakRohitDivate(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncAmtrakRohitDivate(AsyncAPIClient):
+class AsyncAmtrak(AsyncAPIClient):
     list_stations: list_stations.AsyncListStationsResource
     list_trips: list_trips.AsyncListTripsResource
     bookings: bookings.AsyncBookingsResource
-    with_raw_response: AsyncAmtrakRohitDivateWithRawResponse
-    with_streaming_response: AsyncAmtrakRohitDivateWithStreamedResponse
+    with_raw_response: AsyncAmtrakWithRawResponse
+    with_streaming_response: AsyncAmtrakWithStreamedResponse
 
     # client options
     api_key: str
@@ -250,20 +241,20 @@ class AsyncAmtrakRohitDivate(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async Amtrak_Rohit_Divate client instance.
+        """Construct a new async amtrak client instance.
 
         This automatically infers the `api_key` argument from the `TRAIN_TRAVEL_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("TRAIN_TRAVEL_API_KEY")
         if api_key is None:
-            raise AmtrakRohitDivateError(
+            raise AmtrakError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the TRAIN_TRAVEL_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("AMTRAK_ROHIT_DIVATE_BASE_URL")
+            base_url = os.environ.get("AMTRAK_BASE_URL")
         if base_url is None:
             base_url = f"https://try.microcks.io/rest/Train+Travel+API/1.0.0"
 
@@ -281,8 +272,8 @@ class AsyncAmtrakRohitDivate(AsyncAPIClient):
         self.list_stations = list_stations.AsyncListStationsResource(self)
         self.list_trips = list_trips.AsyncListTripsResource(self)
         self.bookings = bookings.AsyncBookingsResource(self)
-        self.with_raw_response = AsyncAmtrakRohitDivateWithRawResponse(self)
-        self.with_streaming_response = AsyncAmtrakRohitDivateWithStreamedResponse(self)
+        self.with_raw_response = AsyncAmtrakWithRawResponse(self)
+        self.with_streaming_response = AsyncAmtrakWithStreamedResponse(self)
 
     @property
     @override
@@ -389,34 +380,34 @@ class AsyncAmtrakRohitDivate(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AmtrakRohitDivateWithRawResponse:
-    def __init__(self, client: AmtrakRohitDivate) -> None:
+class AmtrakWithRawResponse:
+    def __init__(self, client: Amtrak) -> None:
         self.list_stations = list_stations.ListStationsResourceWithRawResponse(client.list_stations)
         self.list_trips = list_trips.ListTripsResourceWithRawResponse(client.list_trips)
         self.bookings = bookings.BookingsResourceWithRawResponse(client.bookings)
 
 
-class AsyncAmtrakRohitDivateWithRawResponse:
-    def __init__(self, client: AsyncAmtrakRohitDivate) -> None:
+class AsyncAmtrakWithRawResponse:
+    def __init__(self, client: AsyncAmtrak) -> None:
         self.list_stations = list_stations.AsyncListStationsResourceWithRawResponse(client.list_stations)
         self.list_trips = list_trips.AsyncListTripsResourceWithRawResponse(client.list_trips)
         self.bookings = bookings.AsyncBookingsResourceWithRawResponse(client.bookings)
 
 
-class AmtrakRohitDivateWithStreamedResponse:
-    def __init__(self, client: AmtrakRohitDivate) -> None:
+class AmtrakWithStreamedResponse:
+    def __init__(self, client: Amtrak) -> None:
         self.list_stations = list_stations.ListStationsResourceWithStreamingResponse(client.list_stations)
         self.list_trips = list_trips.ListTripsResourceWithStreamingResponse(client.list_trips)
         self.bookings = bookings.BookingsResourceWithStreamingResponse(client.bookings)
 
 
-class AsyncAmtrakRohitDivateWithStreamedResponse:
-    def __init__(self, client: AsyncAmtrakRohitDivate) -> None:
+class AsyncAmtrakWithStreamedResponse:
+    def __init__(self, client: AsyncAmtrak) -> None:
         self.list_stations = list_stations.AsyncListStationsResourceWithStreamingResponse(client.list_stations)
         self.list_trips = list_trips.AsyncListTripsResourceWithStreamingResponse(client.list_trips)
         self.bookings = bookings.AsyncBookingsResourceWithStreamingResponse(client.bookings)
 
 
-Client = AmtrakRohitDivate
+Client = Amtrak
 
-AsyncClient = AsyncAmtrakRohitDivate
+AsyncClient = AsyncAmtrak

@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class AmtrakRohitDivateError(Exception):
+class AmtrakError(Exception):
     pass
 
 
-class APIError(AmtrakRohitDivateError):
+class APIError(AmtrakError):
     message: str
     request: httpx.Request
 
