@@ -31,7 +31,7 @@ class ListStationsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/Amtrak_Rohit_Divate-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/rohitdivate/amtrak#accessing-raw-response-data-eg-headers
         """
         return ListStationsResourceWithRawResponse(self)
 
@@ -40,7 +40,7 @@ class ListStationsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/Amtrak_Rohit_Divate-python#with_streaming_response
+        For more information, see https://www.github.com/rohitdivate/amtrak#with_streaming_response
         """
         return ListStationsResourceWithStreamingResponse(self)
 
@@ -111,7 +111,7 @@ class AsyncListStationsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/Amtrak_Rohit_Divate-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/rohitdivate/amtrak#accessing-raw-response-data-eg-headers
         """
         return AsyncListStationsResourceWithRawResponse(self)
 
@@ -120,7 +120,7 @@ class AsyncListStationsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/Amtrak_Rohit_Divate-python#with_streaming_response
+        For more information, see https://www.github.com/rohitdivate/amtrak#with_streaming_response
         """
         return AsyncListStationsResourceWithStreamingResponse(self)
 
