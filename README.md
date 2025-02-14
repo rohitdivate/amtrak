@@ -15,12 +15,9 @@ The REST API documentation can be found on [example.com](https://example.com/sup
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/rohitdivate/amtrak.git
+# install from PyPI
+pip install --pre Amtrak_Rohit_Divate
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre Amtrak_Rohit_Divate`
 
 ## Usage
 
