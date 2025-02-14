@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from Amtrak_Rohit_Divate import AmtrakRohitDivate, AsyncAmtrakRohitDivate
+from Amtrak_Rohit_Divate import Amtrak, AsyncAmtrak
 from Amtrak_Rohit_Divate.types import ListTripListTripsResponse
 from Amtrak_Rohit_Divate._utils import parse_datetime
 
@@ -20,7 +20,7 @@ class TestListTrips:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_trips(self, client: AmtrakRohitDivate) -> None:
+    def test_method_list_trips(self, client: Amtrak) -> None:
         list_trip = client.list_trips.list_trips(
             date=parse_datetime("2019-12-27T18:11:19.117Z"),
             destination="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -30,7 +30,7 @@ class TestListTrips:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_trips_with_all_params(self, client: AmtrakRohitDivate) -> None:
+    def test_method_list_trips_with_all_params(self, client: Amtrak) -> None:
         list_trip = client.list_trips.list_trips(
             date=parse_datetime("2019-12-27T18:11:19.117Z"),
             destination="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -44,7 +44,7 @@ class TestListTrips:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list_trips(self, client: AmtrakRohitDivate) -> None:
+    def test_raw_response_list_trips(self, client: Amtrak) -> None:
         response = client.list_trips.with_raw_response.list_trips(
             date=parse_datetime("2019-12-27T18:11:19.117Z"),
             destination="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -58,7 +58,7 @@ class TestListTrips:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list_trips(self, client: AmtrakRohitDivate) -> None:
+    def test_streaming_response_list_trips(self, client: Amtrak) -> None:
         with client.list_trips.with_streaming_response.list_trips(
             date=parse_datetime("2019-12-27T18:11:19.117Z"),
             destination="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -78,7 +78,7 @@ class TestAsyncListTrips:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_trips(self, async_client: AsyncAmtrakRohitDivate) -> None:
+    async def test_method_list_trips(self, async_client: AsyncAmtrak) -> None:
         list_trip = await async_client.list_trips.list_trips(
             date=parse_datetime("2019-12-27T18:11:19.117Z"),
             destination="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -88,7 +88,7 @@ class TestAsyncListTrips:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_trips_with_all_params(self, async_client: AsyncAmtrakRohitDivate) -> None:
+    async def test_method_list_trips_with_all_params(self, async_client: AsyncAmtrak) -> None:
         list_trip = await async_client.list_trips.list_trips(
             date=parse_datetime("2019-12-27T18:11:19.117Z"),
             destination="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -102,7 +102,7 @@ class TestAsyncListTrips:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list_trips(self, async_client: AsyncAmtrakRohitDivate) -> None:
+    async def test_raw_response_list_trips(self, async_client: AsyncAmtrak) -> None:
         response = await async_client.list_trips.with_raw_response.list_trips(
             date=parse_datetime("2019-12-27T18:11:19.117Z"),
             destination="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -116,7 +116,7 @@ class TestAsyncListTrips:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list_trips(self, async_client: AsyncAmtrakRohitDivate) -> None:
+    async def test_streaming_response_list_trips(self, async_client: AsyncAmtrak) -> None:
         async with async_client.list_trips.with_streaming_response.list_trips(
             date=parse_datetime("2019-12-27T18:11:19.117Z"),
             destination="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
