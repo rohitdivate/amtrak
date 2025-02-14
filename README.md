@@ -15,8 +15,8 @@ The REST API documentation can be found on [example.com](https://example.com/sup
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/Amtrak_Rohit_Divate-python.git
+# install from the production repo
+pip install git+ssh://git@github.com/rohitdivate/amtrak.git
 ```
 
 > [!NOTE]
@@ -198,9 +198,9 @@ list_station = response.parse()  # get the object that `list_stations.list_stati
 print(list_station)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/Amtrak_Rohit_Divate-python/tree/main/src/Amtrak_Rohit_Divate/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/rohitdivate/amtrak/tree/main/src/Amtrak_Rohit_Divate/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/Amtrak_Rohit_Divate-python/tree/main/src/Amtrak_Rohit_Divate/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/rohitdivate/amtrak/tree/main/src/Amtrak_Rohit_Divate/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -304,7 +304,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/Amtrak_Rohit_Divate-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/rohitdivate/amtrak/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 
