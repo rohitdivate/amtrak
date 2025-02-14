@@ -6,7 +6,7 @@ import httpx
 import pytest
 import pydantic
 
-from Amtrak_Rohit_Divate import BaseModel, AmtrakRohitDivate, AsyncAmtrakRohitDivate
+from Amtrak_Rohit_Divate import Amtrak, BaseModel, AsyncAmtrak
 from Amtrak_Rohit_Divate._response import (
     APIResponse,
     BaseAPIResponse,
@@ -56,7 +56,7 @@ def test_extract_response_type_binary_response() -> None:
 class PydanticModel(pydantic.BaseModel): ...
 
 
-def test_response_parse_mismatched_basemodel(client: AmtrakRohitDivate) -> None:
+def test_response_parse_mismatched_basemodel(client: Amtrak) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -74,7 +74,7 @@ def test_response_parse_mismatched_basemodel(client: AmtrakRohitDivate) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_mismatched_basemodel(async_client: AsyncAmtrakRohitDivate) -> None:
+async def test_async_response_parse_mismatched_basemodel(async_client: AsyncAmtrak) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -91,7 +91,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncAmtr
         await response.parse(to=PydanticModel)
 
 
-def test_response_parse_custom_stream(client: AmtrakRohitDivate) -> None:
+def test_response_parse_custom_stream(client: Amtrak) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -106,7 +106,7 @@ def test_response_parse_custom_stream(client: AmtrakRohitDivate) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_stream(async_client: AsyncAmtrakRohitDivate) -> None:
+async def test_async_response_parse_custom_stream(async_client: AsyncAmtrak) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -125,7 +125,7 @@ class CustomModel(BaseModel):
     bar: int
 
 
-def test_response_parse_custom_model(client: AmtrakRohitDivate) -> None:
+def test_response_parse_custom_model(client: Amtrak) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -141,7 +141,7 @@ def test_response_parse_custom_model(client: AmtrakRohitDivate) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_model(async_client: AsyncAmtrakRohitDivate) -> None:
+async def test_async_response_parse_custom_model(async_client: AsyncAmtrak) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -156,7 +156,7 @@ async def test_async_response_parse_custom_model(async_client: AsyncAmtrakRohitD
     assert obj.bar == 2
 
 
-def test_response_parse_annotated_type(client: AmtrakRohitDivate) -> None:
+def test_response_parse_annotated_type(client: Amtrak) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -173,7 +173,7 @@ def test_response_parse_annotated_type(client: AmtrakRohitDivate) -> None:
     assert obj.bar == 2
 
 
-async def test_async_response_parse_annotated_type(async_client: AsyncAmtrakRohitDivate) -> None:
+async def test_async_response_parse_annotated_type(async_client: AsyncAmtrak) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -201,7 +201,7 @@ async def test_async_response_parse_annotated_type(async_client: AsyncAmtrakRohi
         ("FalSe", False),
     ],
 )
-def test_response_parse_bool(client: AmtrakRohitDivate, content: str, expected: bool) -> None:
+def test_response_parse_bool(client: Amtrak, content: str, expected: bool) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=content),
         client=client,
@@ -226,7 +226,7 @@ def test_response_parse_bool(client: AmtrakRohitDivate, content: str, expected: 
         ("FalSe", False),
     ],
 )
-async def test_async_response_parse_bool(client: AsyncAmtrakRohitDivate, content: str, expected: bool) -> None:
+async def test_async_response_parse_bool(client: AsyncAmtrak, content: str, expected: bool) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=content),
         client=client,
@@ -245,7 +245,7 @@ class OtherModel(BaseModel):
 
 
 @pytest.mark.parametrize("client", [False], indirect=True)  # loose validation
-def test_response_parse_expect_model_union_non_json_content(client: AmtrakRohitDivate) -> None:
+def test_response_parse_expect_model_union_non_json_content(client: Amtrak) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo", headers={"Content-Type": "application/text"}),
         client=client,
@@ -262,7 +262,7 @@ def test_response_parse_expect_model_union_non_json_content(client: AmtrakRohitD
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("async_client", [False], indirect=True)  # loose validation
-async def test_async_response_parse_expect_model_union_non_json_content(async_client: AsyncAmtrakRohitDivate) -> None:
+async def test_async_response_parse_expect_model_union_non_json_content(async_client: AsyncAmtrak) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo", headers={"Content-Type": "application/text"}),
         client=async_client,
