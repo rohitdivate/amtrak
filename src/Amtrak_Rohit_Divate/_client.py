@@ -69,7 +69,7 @@ class Amtrak(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous amtrak client instance.
+        """Construct a new synchronous Amtrak client instance.
 
         This automatically infers the `api_key` argument from the `TRAIN_TRAVEL_API_KEY` environment variable if it is not provided.
         """
@@ -241,7 +241,7 @@ class AsyncAmtrak(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async amtrak client instance.
+        """Construct a new async AsyncAmtrak client instance.
 
         This automatically infers the `api_key` argument from the `TRAIN_TRAVEL_API_KEY` environment variable if it is not provided.
         """
