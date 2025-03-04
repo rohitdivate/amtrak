@@ -1,11 +1,11 @@
 [project]
 name = "Amtrak_Rohit_Divate"
-version = "0.0.1-alpha.1"
-description = "The official Python library for the Amtrak_Rohit_Divate API"
+version = "0.1.0-alpha.1"
+description = "The official Python library for the amtrak API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Amtrak Rohit Divate", email = "support@example.com" },
+{ name = "Amtrak", email = "support@example.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
